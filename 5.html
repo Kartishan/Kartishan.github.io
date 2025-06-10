@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Статистика зарплаты</title>
+    <link rel="stylesheet" href="styles3.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="dashboard-container">
+    <h2 class="title">Статистика зарплаты</h2>
+
+    <div class="chart-section">
+        <h3>График зарплаты</h3>
+        <canvas id="salaryChart"></canvas>
+    </div>
+
+    <div class="activity-board">
+        <h3>Доска активности</h3>
+        <div class="activity-item">
+            <span>Дата: 19.12.2024</span>
+            <span>Часы: 8</span>
+            <span>Зарплата: 1600 руб.</span>
+        </div>
+        <div class="activity-item">
+            <span>Дата: 18.12.2024</span>
+            <span>Часы: 6</span>
+            <span>Зарплата: 1200 руб.</span>
+        </div>
+        <div class="activity-item">
+            <span>Дата: 17.12.2024</span>
+            <span>Часы: 7</span>
+            <span>Зарплата: 1400 руб.</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    const ctx = document.getElementById('salaryChart').getContext('2d');
+    const salaryChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['17.12.2024', '18.12.2024', '19.12.2024'], // Даты
+            datasets: [{
+                label: 'Зарплата (руб.)',
+                data: [1400, 1200, 1600],
+                borderColor: '#2563eb',
+                backgroundColor: 'rgba(37, 99, 235, 0.2)',
+                borderWidth: 2,
+                tension: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top'
+                }
+            },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Дата'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Зарплата (руб.)'
+                    },
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>

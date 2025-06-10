@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тайм-трекер - График</title>
+    <link rel="stylesheet" href="styles4.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="tracker-container">
+    <h2 class="title">Тайм-трекер - Неделя</h2>
+
+    <!-- Итоговая информация -->
+    <div class="summary">
+        <div class="total">
+            <h3>Итог за неделю:</h3>
+            <p class="total-earnings">10,200 руб.</p>
+        </div>
+        <div class="comparison">
+            <h3>Сравнение с прошлой неделей:</h3>
+            <p class="difference positive">+1,200 руб.</p>
+        </div>
+    </div>
+
+    <!-- График -->
+    <div class="chart-container">
+        <canvas id="earningsChart"></canvas>
+    </div>
+</div>
+
+<script>
+    // Данные для графика
+    const earningsData = [2000, 1600, 1000, 0, 1800]; // Заработок по дням недели
+    const labels = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт']; // Дни недели
+
+    // Создание графика
+    const ctx = document.getElementById('earningsChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar', // Столбчатый график
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Заработок (руб.)',
+                data: earningsData,
+                backgroundColor: '#2563eb', // Цвет столбцов
+                borderColor: '#1d4ed8',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true // Начало оси Y с нуля
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>

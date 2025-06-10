@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тайм-трекер</title>
+    <link rel="stylesheet" href="styles2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="tracker-container">
+    <h2 class="title">Тайм-трекер</h2>
+    <div class="tracker-board">
+        <div class="tracker-item">
+            <label for="hours">Отработанное время (часы):</label>
+            <input type="number" id="hours" class="tracker-input" placeholder="Введите часы" required>
+        </div>
+        <div class="tracker-item">
+            <label for="rate">Ставка (руб/час):</label>
+            <input type="number" id="rate" class="tracker-input" placeholder="Введите ставку" required>
+        </div>
+        <div class="tracker-item">
+            <label>Заработано (руб):</label>
+            <output id="earnings" class="tracker-output">0</output>
+        </div>
+    </div>
+    <button class="btn" id="calculate-btn">Рассчитать</button>
+</div>
+
+<script>
+    document.getElementById('calculate-btn').addEventListener('click', function() {
+        const hours = parseFloat(document.getElementById('hours').value) || 0;
+        const rate = parseFloat(document.getElementById('rate').value) || 0;
+        const earnings = hours * rate;
+        document.getElementById('earnings').textContent = earnings.toFixed(2);
+    });
+</script>
+</body>
+</html>
